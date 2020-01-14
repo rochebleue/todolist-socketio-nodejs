@@ -1,0 +1,113 @@
+body {
+    background-color: #1e1f23;
+    padding: 0;
+    margin: 0;
+    background: linear-gradient( rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75) ), url('img/background-title.jpg');
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    vertical-align: middle;
+}
+header {
+    display: flex;
+    height: 200px;
+    width: 80%;
+    max-width: 500px;
+    margin-top: 50px;
+    background-image: url("img/background-title.jpg");
+    background-size: cover;
+    background-position: bottom;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    -webkit-box-shadow: 0px -7px 15px -3px #050505; 
+	box-shadow: 0px -7px 15px -3px #050505;
+}
+h1, h2 {
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    margin:0;
+}
+h1 {
+	font-size: 3rem;
+	color: white;
+	padding-bottom: 20px;
+}
+h2 {
+	font-size: 1rem;
+	color: grey;
+}
+.titles {
+	width: 100%;
+	background-color: #121315;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	vertical-align: middle;
+	padding: 50px 0 50px 0;
+}
+#container {
+    width: 80%;
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding-top: 0px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+	-webkit-box-shadow: 0px 17px 15px -3px #111; 
+	box-shadow: 0px 17px 15px -3px #111;
+}
+.form {
+
+}
+.list {
+    font-family: 'Montserrat', sans-serif;
+}
+.tasks {
+	padding-top: 30px;
+	padding-bottom: 80px;
+}
+form {
+	display: flex;
+	flex-direction: column;
+	width: 300px;
+}
+input {
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    margin:0;
+}
+input[type=submit] {
+	padding: 5px;
+}
+input[type=text] {
+	margin-bottom: 5px;
+	outline: none;
+    border: 1px solid grey;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+ul {
+	padding-left: 0;
+}
+ul li {
+	line-height: 2.5rem;
+	display: flex;
+	justify-content: space-between;
+    text-transform: uppercase;
+}
+ul li span {
+	text-decoration: none;
+	color: #d49100;
+	font-size: 1.3rem;
+}
+ul li span:hover {
+	color: black;
+    cursor: pointer;
+}

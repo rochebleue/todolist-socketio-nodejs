@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Ma Todo List</title>
+  <link href= "/public/assets/styles.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+
+	<header>
+	</header>
+	<div id="container">
+		<div class="titles">
+			<h1>Ma todo list</h1>
+			<h2>Todolist collaborative</h2>
+		</div>
+		<div class="tasks">	
+			<div class="form">
+				<input type="text" name="taskName" class="taskValue">
+				<input type="submit" value="Ajouter une tâche" class="addTask">
+			</div>
+			<div class="list">
+				<ul class="items">
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+    <script>
+    	$(document).ready(function() {
+    		var list = [];
+	        var socket = io.connect('http://localhost:8080');
+	        socket.emit('LIST_REQUEST', {});
+
+	        socket.on('LIST_REFRESH', function (updated_list) {
+	        	list = updated_list;
+	        	$('ul').empty();
+	        	list.forEach(function(name, index) {
+	        		$('ul').append(
+	        			'<li>'
+	        			+ name
+	        			+ '<span class="removeTask" id="'+index+'">✕</span>'
+	        			+'</li>'
+	        			);
+	        	});
+	        	console.log('list updated ->' + list);
+	        });
+
+	        function addTask(width, height) {
+	        	if ($('.taskValue').val()) {
+		        	socket.emit('LIST_ADD', $('.taskValue').val());
+					$('.taskValue').val('');
+	        	}
+	        }
+	        $('.addTask').click(function() {
+	        	addTask();
+	        });
+			$('.taskValue').keypress(function(event){
+				var keycode = (event.keyCode ? event.keyCode : event.which);
+				if (keycode == '13') {
+					addTask();
+				}
+			});
+	        $('ul').delegate('li .removeTask', 'click', function(e) {
+	        	socket.emit('REMOVE_ELEM', e.target.id);
+	        });
+    	});
+    </script>
+
+</body>
+</html>
+
+
